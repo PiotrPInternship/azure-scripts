@@ -17,4 +17,18 @@ dnsName="vm1-ppaszek-cli"
 
 az disk create --name $diskname --resource-group $resourcegroup --location $location1 --os-type Linux --size-gb $disksize --image-reference $image
 
-az vm create --name $vmname --resource-group $resourcegroup --attach-os-disk $diskname --os-type Linux --vnet-name $vnetname --subnet $subnet1 --os-disk-delete-option Delete --size $vmpricing --public-ip-address $reservedIP --public-ip-address-dns-name $dnsName --public-ip-address-allocation static
+#clear VM
+
+az vm create --name $vmname --resource-group $resourcegroup --attach-os-disk $diskname --os-type Linux --vnet-name $vnetname --subnet $subnet1 --os-disk-delete-option Delete --size $vmpricing --public-ip-address-allocation static
+
+#VM with reserved IP
+
+# az vm create --name $vmname --resource-group $resourcegroup --attach-os-disk $diskname --os-type Linux --vnet-name $vnetname --subnet $subnet1 --os-disk-delete-option Delete --size $vmpricing --public-ip-address $reservedIP --public-ip-address-dns-name static
+
+#VM with DNS
+
+# az vm create --name $vmname --resource-group $resourcegroup --attach-os-disk $diskname --os-type Linux --vnet-name $vnetname --subnet $subnet1 --os-disk-delete-option Delete --size $vmpricing --public-ip-address-dns-name $dnsName --public-ip-address-allocation static
+
+#VM with reserved IP and DNS
+
+# az vm create --name $vmname --resource-group $resourcegroup --attach-os-disk $diskname --os-type Linux --vnet-name $vnetname --subnet $subnet1 --os-disk-delete-option Delete --size $vmpricing --public-ip-address $reservedIP --public-ip-address-dns-name $dnsName --public-ip-address-allocation static
