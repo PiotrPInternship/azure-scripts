@@ -38,7 +38,18 @@ ConvertFrom-Csv
 
 foreach ($subnet in $subnets) {
  
-    $dmz = New-AzVirtualNetworkSubnetConfig -Name $subnet.SubnetName -AddressPrefix $subnet.AddressPrefix
-    $updatedvnet=Add-AzVirtualNetworkSubnetConfig -Name $dmz.Name -VirtualNetwork $virtualNetwork -AddressPrefix $dmz.AddressPrefix
-    $updatedvnet | Set-AzVirtualNetwork
+    $subnetcreate = New-AzVirtualNetworkSubnetConfig -Name $subnet.SubnetName -AddressPrefix $subnet.AddressPrefix
+    $vnetupdate=Add-AzVirtualNetworkSubnetConfig -Name $subnetcreate.Name -VirtualNetwork $virtualNetwork -AddressPrefix $subnetcreate.AddressPrefix
+    $vnetupdate | Set-AzVirtualNetwork
 }
+
+# $subnetsnames = @('subnet1','subnet2','subnet3','subnet4')
+# $subnetadresses = @('10.1.0.0/24','10.1.1.0/24','10.1.2.0/24','10.1.3.0/24')
+
+# foreach ($subnetname in $subnetnames) {
+#     foreach($subnetadress in $subnetadresses){
+#         $subnetcreate = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetadress
+#         $vnetupdate=Add-AzVirtualNetworkSubnetConfig -Name $subnetcreate.Name -VirtualNetwork $virtualNetwork -AddressPrefix $subnetcreate.AddressPrefix
+#         $vnetupdate | Set-AzVirtualNetwork
+#     }
+# }
