@@ -1,0 +1,21 @@
+name: Creating VNet bash
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs: 
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 'Azure login'
+      uses: azure/login@v1.4.3
+      with:
+          creds: ${{ secrets.AZ_CREDS }}
+    - name: 'Creating VNet'
+      uses: Azure/cli@v1
+      with:
+    # Specify the script here
+        inlineScript: $GITHUB_WORKSPACE/azure-scripts/bash-scripts/vnet.sh
