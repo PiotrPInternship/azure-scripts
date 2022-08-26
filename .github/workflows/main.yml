@@ -13,10 +13,7 @@ jobs:
       - name: 'Az CLI login'
         uses: azure/login@v1.4.3
         with:
-          client-id: ${{ secrets.AZ-CLIENT-ID }}
-          tenant-id: ${{ secrets.AZ-TENANT-ID }}
-          subscription-id: ${{ secrets.AZ-SUB-ID }}
-  
+          creds: ${{ AZURE_CREDENTIALS }}
       - name: 'Run Azure CLI commands'
         run: |
             az account show
