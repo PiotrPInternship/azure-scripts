@@ -6,16 +6,19 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
-  build:
+jobs: 
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Az CLI login'
-        uses: azure/login@v1.4.3
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      - name: 'Run Azure CLI commands'
-        run: |
-            az account show
-            az group list
-            pwd 
+    - name: 'Azure login'
+      uses: azure/login@v1.4.3
+      with:
+          client-id: ${{ secrets.AZ_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZ_TENANT_ID }}
+          subscription-id: ${{ secrets.AZ_SUB_ID }}
+  
+    - name: 'Run Azure CLI commands'
+      run: |
+          az account show
+          az group list
+          pwd
