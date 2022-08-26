@@ -1,0 +1,24 @@
+name: Azure login
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Az CLI login'
+        uses: azure/login@v1.4.3
+        with:
+          client-id: ${{ secrets.AZ-CLIENT-ID }}
+          tenant-id: ${{ secrets.AZ-TENANT-ID }}
+          subscription-id: ${{ secrets.AZ-SUB-ID }}
+  
+      - name: 'Run Azure CLI commands'
+        run: |
+            az account show
+            az group list
+            pwd 
