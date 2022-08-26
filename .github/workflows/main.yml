@@ -14,10 +14,10 @@ jobs:
       uses: azure/login@v1.4.3
       with:
           creds: ${{ secrets.AZ_CREDS }}
-    - name: 'Creating VNet'
-      uses: Azure/cli@v1
+    - name: Azure CLI script file
+      uses: azure/CLI@v1
       with:
-    # Specify the script here
+        azcliversion: 2.30.0
         inlineScript: = |
           chmod +x $GITHUB_WORKSPACE/bash-scripts/vnet.sh
           $GITHUB_WORKSPACE/bash-scripts/vnet.sh
