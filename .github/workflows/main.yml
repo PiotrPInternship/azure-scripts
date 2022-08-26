@@ -18,4 +18,7 @@ jobs:
       uses: Azure/cli@v1
       with:
     # Specify the script here
-        inlineScript: $GITHUB_WORKSPACE/bash-scripts/vnet.sh
+        inlineScript: = |
+          chmod +x $GITHUB_WORKSPACE/bash-scripts/vnet.sh
+          $GITHUB_WORKSPACE/bash-scripts/vnet.sh
+        
