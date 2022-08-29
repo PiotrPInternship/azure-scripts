@@ -19,5 +19,5 @@ jobs:
       with:
         inlineScript: = |
           chmod +x $GITHUB_WORKSPACE/bash-scripts/vnet.sh
-          $GITHUB_WORKSPACE/bash-scripts/vnet.sh
+          $GITHUB_WORKSPACE/bash-scripts/vnet.sh Test
         
