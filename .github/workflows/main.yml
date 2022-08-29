@@ -17,7 +17,6 @@ jobs:
     - name: Azure CLI script file
       uses: azure/CLI@v1
       with:
-        azcliversion: 2.30.0
         inlineScript: = |
           chmod +x $GITHUB_WORKSPACE/bash-scripts/vnet.sh
           $GITHUB_WORKSPACE/bash-scripts/vnet.sh
