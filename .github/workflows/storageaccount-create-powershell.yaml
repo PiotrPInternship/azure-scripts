@@ -1,0 +1,31 @@
+on: [push]
+
+name: AzurePowerShellDeploy
+
+permissions:
+      id-token: write
+      contents: read
+
+env:
+   SCRIPT_PATH: '.'
+   
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }} 
+        enable-AzPSSession: true
+        
+    - name: Create storageaccount
+      uses: azure/powershell@v1
+      with:
+        azPSVersion: "latest"
+        inlineScript: |
+            ./powershell-scripts/storageaccount.ps1
