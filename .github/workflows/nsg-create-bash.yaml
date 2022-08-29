@@ -20,6 +20,6 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: = |
-          chmod +x $GITHUB_WORKSPACE/bash-scripts/nsg.sh
-          $GITHUB_WORKSPACE/bash-scripts/nsg.sh
+          chmod +x $GITHUB_WORKSPACE/bash-scripts/NSG.sh
+          $GITHUB_WORKSPACE/bash-scripts/NSG.sh
         
