@@ -2,8 +2,14 @@
 echo "Creating VNET"
 
 vnetname="vnet1"
-resourcegroup="script-test"
-location1="westeurope"
+# resourcegroup="script-test"
+# location1="westeurope"
+
+while IFS="," read -r resourcegroup location1
+do
+    echo "Resource Group: $resourcegroup"
+    echo "Location: $location1"
+done < <(tail -n +2 .\csv-files-bash\rg-and-location.csv)
 addressspace="10.1.0.0/16"
 subnetsArray=("Subnet1" "10.1.0.0/24" "Subnet2" "10.1.1.0/24")
 subnets=2
