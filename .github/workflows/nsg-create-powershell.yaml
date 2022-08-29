@@ -28,4 +28,4 @@ jobs:
       with:
         azPSVersion: "latest"
         inlineScript: |
-            ./powershell-scripts/nsg.ps1
+            ./powershell-scripts/NSG.ps1
