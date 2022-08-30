@@ -1,4 +1,4 @@
-name: Azure login
+name: Azure login in bash
 
 on:
   push:
