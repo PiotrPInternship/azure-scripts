@@ -1,11 +1,10 @@
-name: Azure login in bash
+name: Run Azure Login in bash
+on: [push]
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+permissions:
+      id-token: write
+      contents: read
+      
 jobs: 
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -17,3 +16,8 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   
+    - name: 'Run Azure CLI commands'
+      run: |
+          az account show
+          az group list
+          pwd
